@@ -1,0 +1,1 @@
+export const BgImage = '/images/bg.png'
