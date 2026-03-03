@@ -12,15 +12,15 @@ export const VanDetails = (): JSX.Element => {
         type:""
     })
     const params = useParams()
-    const fetchData = ():void =>{
-        fetch("/api/vans/"+params['id']).then(res=>res.json()).then(res=>setSingleVan(res['vans']))
+    const fetchData = () =>{
+         fetch("/api/vans/"+params['id']).then(res=>res.json()).then(res=>setSingleVan(res['vans']))
     }
 
-    useEffect(()=>fetchData(),[])
+    useEffect(()=> fetchData(),[])
 
     return <div className="p-10 space-y-5">
         <Link to="/vans" className="underline">back to all vans</Link>
-        <img src={singleVan['imageUrl']} alt=" van image" />
+        <img src={singleVan['imageUrl']} alt=" van image" className="rounded-xl" />
         <p className="bg-[#FF8C38] px-3 py-1 w-fit text-white rounded">{singleVan["type"]}</p>
         <h3 className="font-bold text-3xl">{singleVan["name"]}</h3>
         <p className="text-xl"><span className="font-bold">${singleVan["price"]}</span> /day</p>
