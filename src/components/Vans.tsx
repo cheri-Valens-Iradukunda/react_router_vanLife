@@ -1,18 +1,13 @@
 import { useContext } from "react"
 import { Context } from "../App"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export const Vans = () => {
 
     const contextData = useContext(Context)
-    const navigation = useNavigate()
+    const colors = ["#FF8C38","#005a5a","#000000","#bd2f08","#005a5a","#000000"]
+
     
-    const colors = ["#bd2f08","#005a5a","#000000","#bd2f08","#005a5a","#000000"]
-
-    const handleClick = (e:string):void => {
-        navigation("/vans/"+e)
-
-    }
 
 
     return <div className="flex justify-center p-4"> 
@@ -20,7 +15,11 @@ export const Vans = () => {
             {
                 contextData && contextData.map((value,index)=>(
                     
-                    <div key={value["id"]} onClick={() =>handleClick(value['id'])}>
+                    <Link 
+                    aria-label={`View details for ${value["name"]}, 
+                             priced at $${ value["price"]} per day`}
+                    to={`/vans/${value["id"]}`} 
+                    key={value["id"]}>
                         <img src={value['imageUrl']} alt="" className="w-full" />
                         <div className="flex justify-between">
                             <p className="font-bold">{value['name']}</p>
@@ -35,7 +34,7 @@ export const Vans = () => {
                             >
                             {value["type"]}
                         </button>
-                    </div>
+                    </Link>
 
                 ))
             }
