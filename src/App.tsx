@@ -12,6 +12,7 @@ import { HostNav } from './components/hosts/HostNav'
 import { Layout } from './components/Layout/Layout'
 import { HostedVans } from './components/hosts/ListedVans'
 import { HostedVanDetails } from './components/hosts/HostVanDetails'
+import { VanDescription } from './components/hosts/VanDescription'
 // import { Description } from './components/hosts/Descri'
 
 export type vansValue = {
@@ -61,7 +62,7 @@ function App() {
                 <Route path="vans" element={<HostedVans />} />
 
                 <Route path="vans/:id" element={<HostedVanDetails />} >
-                  <Route index/>
+                  <Route index element={<VanDescription />}/>
                   <Route path='images' element={<h2>images goes here</h2>} />
                   <Route path='price' element={<h2>pricing goes here</h2>} />
                 </Route>
