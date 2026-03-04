@@ -1,9 +1,9 @@
 import { useEffect, useState, type JSX } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { HostVanDetailsNav } from "./HostNav";
-import type { vansValue } from "../../App";
+// import type { vansValue } from "../../App";
 
-type ContextType = { van:vansValue | null };
+// type ContextType = { van:vansValue | null };
 export const HostedVanDetails = (): JSX.Element => {
     const [singleVan,setSingleVan] = useState({
         description:"",
