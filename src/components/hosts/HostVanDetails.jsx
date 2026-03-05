@@ -29,6 +29,6 @@ export const HostedVanDetails = ()=> {
         <img src={singleVan['imageUrl']} alt=" van image" className="rounded-xl" />
         
         <HostVanDetailsNav />
-        <Outlet context = {{ singleVan}} />
+        <Outlet context = {{singleVan}} />
         </div>
 }
