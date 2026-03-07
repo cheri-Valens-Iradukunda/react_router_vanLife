@@ -1,7 +1,6 @@
-import type { JSX } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
-export const HostNav = ():JSX.Element => {
+export const HostNav = () => {
 
     return <div>
         <nav className="flex gap-3 *:hover:underline *:hover:text-gray-300 text-gray-700">
@@ -15,11 +14,28 @@ export const HostNav = ():JSX.Element => {
 }
 
 export const HostVanDetailsNav = () => {
+    let texts = ["Details","pricing","Photos"]
+    let destinations = [".", "price","images"]
     return <div>
         <nav className="flex gap-3 *:hover:underline *:hover:text-gray-300 text-gray-700">
-            <NavLink className={({isActive}) => isActive ? "text-black underline":""} end to=".">Details</NavLink>
-            <NavLink className={({isActive}) => isActive ? "text-black underline":""} to="price">Pricing</NavLink>
-            <NavLink className={({isActive}) => isActive ? "text-black underline":""} to="images">Photos</NavLink>
+
+            {
+                texts.map((elem,index) => {
+                    return NavLinks(elem,destinations[index])
+                })
+            }
+
         </nav>
     </div>
 }
+
+export function NavLinks(texts,destinations){
+
+    return <NavLink className={({isActive}) => isActive ? "text-black underline":""} end to={destinations}>{texts}</NavLink>
+    
+}
+
+ deleted:    src/components/hosts/HostNav.tsx
+        modified:   src/components/hosts/hostDetails/Images.jsx
+        modified:   src/components/hosts/hostDetails/Prices.jsx
+        modified:   src/components/hosts/hostDetails/VanDescription.jsx
