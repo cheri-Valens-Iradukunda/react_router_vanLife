@@ -1,19 +1,50 @@
 import { useContext } from "react"
-import { Context } from "../App"
-import { Link } from "react-router-dom"
+import { Contexts } from "../App"
+import { Link, NavLink, useSearchParams } from "react-router-dom"
 
 export const Vans = () => {
 
-    const contextData = useContext(Context)
+    const contextData:any = useContext(Contexts)
     const colors = ["#FF8C38","#005a5a","#000000","#bd2f08","#005a5a","#000000"]
 
+    const [params,setParams] = useSearchParams()
+    const type = params.get("type")
+    const fetchedContextData = type ? 
+        contextData.filter((elem:any)=>elem["type"].toLowerCase() == type): 
+        contextData;
     
+    // function genNewSearchParamString(key, value) {
+    //     const sp = new URLSearchParams(searchParams)
+    //     if (value === null) {
+    //     sp.delete(key)
+    //     } else {
+    //     sp.set(key, value)
+    //     }
+    //     return `?${sp.toString()}`
+    // }
 
+    const setNewParameterString = (key:string, value: string | null):void => {
+        const searchParam = new URLSearchParams(params)
+        if(value == null){
+            searchParam.delete(key)
+        }else{
+            searchParam.set(key, value)
+        }
+        setParams(searchParam)
+        
+    }
 
-    return <div className="flex justify-center p-4"> 
+    return <div className="flex justify-center flex-col p-4"> 
+        <h2 className="text-2xl">Explore our van options</h2>
+        <nav className="gap-2 flex *:hover:underline">
+            <button onClick={()=>setNewParameterString("type","simple")}>Simple</button>
+            <button onClick={()=>setNewParameterString("type","luxury")}>Luxury</button>
+            <button onClick={()=>setParams({type:"rugged"})}>Rugged</button>
+            <button onClick={()=>setParams({})}>Clear</button>
+        </nav>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center *:sm:w-1/2 *:md:w-2/3 lg:w-full *:max-sm:w-2/3 *:mx-auto">
             {
-                contextData && contextData.map((value,index)=>(
+                fetchedContextData && fetchedContextData.map((value:any,index:number)=>(
                     
                     <Link 
                     aria-label={`View details for ${value["name"]}, 
