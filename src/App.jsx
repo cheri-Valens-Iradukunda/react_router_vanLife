@@ -27,7 +27,7 @@ import { Prices } from './components/hosts/hostDetails/Prices'
 //   hostId: string
 // }
 
-export const Context = createContext([]);
+export const Contexts = createContext();
 
 function App() {
   const [vans,setVans] = useState([])
@@ -44,37 +44,35 @@ function App() {
 
   return (
     <div className='md:w-[50vw] max-sm:w-screen sm:w-[80vw] mx-auto bg-white'>
-      <Context.Provider value={vans}>
-      <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Layout />}>
+      <Contexts.Provider value={vans}>
+        <Routes>
+          <Route path='/' element={<Layout />}>
 
-              <Route index element={<HomeBody />} />
-              <Route path='about' element={<AboutPage />} />
+            <Route index element={<HomeBody />} />
+            <Route path='about' element={<AboutPage />} />
 
-              <Route path='vans'>
-                <Route index element={<Vans />} />
-                <Route path=':id' element={<VanDetails />} />
-              </Route>
-              
-              <Route path="host" element={<HostNav />} >
-                <Route index element={<Dashboard />} />
-                <Route path="income" element={<Income />} />
-                <Route path="review" element={<Reviews />} />
-                <Route path="vans" element={<HostedVans />} />
-
-                <Route path="vans/:id" element={<HostedVanDetails />} >
-                  <Route index element={<VanDescription />}/>
-                  <Route path='images' element={<Images />} />
-                  <Route path='price' element={<Prices />} />
-                </Route>
-              
-              </Route>
+            <Route path='vans'>
+              <Route index element={<Vans />} />
+              <Route path=':id' element={<VanDetails />} />
             </Route>
+            
+            <Route path="host" element={<HostNav />} >
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="review" element={<Reviews />} />
+              <Route path="vans" element={<HostedVans />} />
 
-          </Routes>
-      </BrowserRouter>
-      </Context.Provider>
+              <Route path="vans/:id" element={<HostedVanDetails />} >
+                <Route index element={<VanDescription />}/>
+                <Route path='images' element={<Images />} />
+                <Route path='price' element={<Prices />} />
+              </Route>
+            
+            </Route>
+          </Route>
+
+        </Routes>
+      </Contexts.Provider>
     </div>
   )
 }
