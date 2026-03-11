@@ -34,8 +34,3 @@ export function NavLinks(texts,destinations){
     return <NavLink className={({isActive}) => isActive ? "text-black underline":""} end to={destinations}>{texts}</NavLink>
     
 }
-
- deleted:    src/components/hosts/HostNav.tsx
-        modified:   src/components/hosts/hostDetails/Images.jsx
-        modified:   src/components/hosts/hostDetails/Prices.jsx
-        modified:   src/components/hosts/hostDetails/VanDescription.jsx
