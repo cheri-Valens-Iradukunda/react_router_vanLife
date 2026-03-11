@@ -2,6 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createServer, Model } from "miragejs"
+import { App2 } from './App2.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
 
 createServer({
@@ -44,6 +46,8 @@ createServer({
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
   </StrictMode>,
 )
