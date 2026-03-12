@@ -27,20 +27,10 @@ import { Prices } from './components/hosts/hostDetails/Prices'
 //   hostId: string
 // }
 
-export const Contexts = createContext();
+export const contexts = createContext();
 
 function App() {
-  const [vans,setVans] = useState([])
-
-  async function fetchUsers(){
-    await fetch("/api/vans").then(res=>res.json()).then(res=>setVans(res.vans))
-
-  }
-
-  useEffect(()=>{
-    fetchUsers()
-
-  },[])
+  
 
   return (
     <div className='md:w-[50vw] max-sm:w-screen sm:w-[80vw] mx-auto bg-white'>

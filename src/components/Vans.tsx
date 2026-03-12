@@ -1,17 +1,26 @@
-import { useContext } from "react"
-import { Contexts } from "../App"
-import { Link, NavLink, useSearchParams } from "react-router-dom"
-
+import { useEffect, useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
 export const Vans = () => {
 
-    const contextData:any = useContext(Contexts)
+    const [vans,setVans] = useState([])
+    
+      async function fetchUsers(){
+        await fetch("/api/vans").then(res=>res.json()).then(res=>setVans(res.vans))
+    
+      }
+    
+      useEffect(()=>{
+        fetchUsers()
+    
+      },[])
+
     const colors = ["#FF8C38","#005a5a","#000000","#bd2f08","#005a5a","#000000"]
 
     const [params,setParams] = useSearchParams()
     const type = params.get("type")
     const fetchedContextData = type ? 
-        contextData.filter((elem:any)=>elem["type"].toLowerCase() == type): 
-        contextData;
+        vans.filter((elem:any)=>elem["type"].toLowerCase() == type): 
+        vans;
     
     // function genNewSearchParamString(key, value) {
     //     const sp = new URLSearchParams(searchParams)

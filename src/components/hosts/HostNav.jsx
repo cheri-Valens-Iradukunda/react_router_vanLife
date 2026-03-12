@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export const HostNav = () => {
 
@@ -31,6 +31,6 @@ export const HostVanDetailsNav = () => {
 
 export function NavLinks(texts,destinations){
 
-    return <NavLink className={({isActive}) => isActive ? "text-black underline":""} end to={destinations}>{texts}</NavLink>
+    return <NavLink key={destinations} className={({isActive}) => isActive ? "text-black underline":""} end to={destinations}>{texts}</NavLink>
     
 }
