@@ -34,7 +34,6 @@ function App() {
 
   return (
     <div className='md:w-[50vw] max-sm:w-screen sm:w-[80vw] mx-auto bg-white'>
-      <Contexts.Provider value={vans}>
         <Routes>
           <Route path='/' element={<Layout />}>
 
@@ -62,7 +61,6 @@ function App() {
           </Route>
 
         </Routes>
-      </Contexts.Provider>
     </div>
   )
 }
