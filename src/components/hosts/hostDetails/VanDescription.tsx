@@ -1,8 +1,13 @@
 import { useOutletContext } from "react-router-dom"
+import type { vansValue } from "../../../App"
 
 export const VanDescription = () => {
 
-    const {singleVan} = useOutletContext()
+    type singleVanType = {
+        singleVan: vansValue
+    } 
+
+    const {singleVan}:singleVanType = useOutletContext()
 
     return <div className="space-y-5">
         

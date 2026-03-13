@@ -1,5 +1,5 @@
 import { useEffect, useState, type JSX } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 
 export const VanDetails = (): JSX.Element => {
@@ -12,6 +12,13 @@ export const VanDetails = (): JSX.Element => {
         type:""
     })
     const params = useParams()
+    const location = useLocation()
+    
+    const search = location.state?.state || "" 
+    // const search = location.state && location.state.search || ""
+
+    console.log(location)
+
     const fetchData = () =>{
          fetch("/api/vans/"+params['id']).then(res=>res.json()).then(res=>setSingleVan(res['vans']))
     }
@@ -19,8 +26,12 @@ export const VanDetails = (): JSX.Element => {
     useEffect(()=> fetchData(),[])
 
     return <div className="p-10 space-y-5">
-        <Link to="/vans" className="underline">back to all vans</Link>
-        <img src={singleVan['imageUrl']} alt=" van image" className="rounded-xl" />
+        <Link
+            to={`/vans${search ? `?${search}` : ""}`}
+            relative="path"
+            className="underline bg-gray-300 rounded px-3 py-1"
+        >Go Back</Link>
+        <img src={singleVan['imageUrl']} alt=" van image" className="rounded-xl mt-3" />
         <p className="bg-[#FF8C38] px-3 py-1 w-fit text-white rounded">{singleVan["type"]}</p>
         <h3 className="font-bold text-3xl">{singleVan["name"]}</h3>
         <p className="text-xl"><span className="font-bold">${singleVan["price"]}</span> /day</p>

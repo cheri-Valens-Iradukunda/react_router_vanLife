@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import App from "./App"
 import { createServer, Model } from "miragejs"
-import { BrowserRouter } from 'react-router-dom'
+// import { BrowserRouter } from 'react-router-dom'
 
 
 createServer({
@@ -45,8 +45,8 @@ createServer({
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
         <App />
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </StrictMode>,
 )

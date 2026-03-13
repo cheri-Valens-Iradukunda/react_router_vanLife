@@ -14,7 +14,7 @@ export const HostedVans = ():JSX.Element => {
         
         {
             vans && vans.map((van: vansValue, key:number)=>(
-                <Link  key={key} to={`/host/vans/${van["id"]}`}>
+                <Link  key={key} to={van["id"]}>
                     <div className="flex gap-5 items-center ">
                         
                         <img src={van.imageUrl} className=" max-sm:w-1/2 sm:w-1/4 rounded" alt="" />
