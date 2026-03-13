@@ -13,39 +13,3 @@ export const GetVans = async (): Promise<vansValue[]> => {
     const data = await res.json()
     return data.vans
 }
-
-src/App.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/PageNotFound.tsx
-        src/components/hosts/HostNav.tsx
-        src/components/hosts/HostVanDetails.tsx
-        src/components/hosts/hostDetails/Images.tsx
-        src/components/hosts/hostDetails/Prices.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/PageNotFound.tsx
-        src/components/hosts/HostNav.tsx
-        src/components/hosts/HostVanDetails.tsx
-        src/components/hosts/hostDetails/Images.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/PageNotFound.tsx
-        src/components/hosts/HostNav.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/Api.ts
-        src/components/Api.ts
-        src/components/Error.tsx
-        src/components/PageNotFound.tsx
-        src/components/hosts/HostNav.tsx
-        src/components/hosts/HostVanDetails.tsx
-        src/components/hosts/hostDetails/Images.tsx
-        src/components/hosts/hostDetails/Prices.tsx
-        src/components/hosts/hostDetails/VanDescription.tsx
