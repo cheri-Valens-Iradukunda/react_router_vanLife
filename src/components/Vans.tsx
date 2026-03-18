@@ -1,6 +1,14 @@
 import { type JSX } from "react"
 import { Link, useLoaderData, useSearchParams } from "react-router-dom"
 import type { vansValue } from "../App"
+import { GetVans } from "./Api"
+import { RequireAuth } from "./Layout/utils"
+
+export const loadFunction = async () =>{
+    await RequireAuth()
+    return GetVans
+    
+} 
 
 export const Vans = ():JSX.Element => {
     
