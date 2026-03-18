@@ -1,15 +1,18 @@
 import { useEffect, useState, type JSX } from "react";
 import type { vansValue } from "../../App";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../Api";
+import { RequireAuth } from "../Layout/utils";
+
+export const LoadHostedVans = async() => {
+    await RequireAuth()
+    return getHostVans()
+}
 
 export const HostedVans = ():JSX.Element => {
 
-    const [vans,setVans]: any = useState([])
+    const vans = useLoaderData() as vansValue[]
 
-    useEffect(()=>{
-        fetch("/api/host/vans").then(res=>res.json()).then(res=>setVans(res['vans']))
-    },[])
-    console.log(vans)
     return <div className="space-y-5 mx-10 mt-10">
         
         {

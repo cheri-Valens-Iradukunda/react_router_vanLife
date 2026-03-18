@@ -1,7 +1,6 @@
 import {  NavLink, Outlet } from "react-router-dom";
 
 export const HostNav = () => {
-
     const destinations:string[] = [".","income","vans","review"]
     const texts:string[] = ["Dashboard","Income","vans","Review"]
     
@@ -37,4 +36,13 @@ function NavLinks(texts:string,destinations:string){
 
     return <NavLink key={texts} className={({isActive}) => isActive ? "text-black underline":""} end to={destinations}>{texts}</NavLink>
     
+}
+
+export const loader = async () => {
+    const user = {
+        name:"John Doe",
+        email:"john.doe@example.com"
+    }
+    return user
+
 }
