@@ -1,29 +1,20 @@
-import { useEffect, useState, type JSX } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { type JSX } from "react";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { getVans } from "./Api";
+import type { vansValue } from "../App";
+import { RequireAuth } from "./Layout/utils";
 
+export async function LoadVanDetails({ params }:any) {
+    await RequireAuth()
+    return getVans(params["id"])
+}
 
 export const VanDetails = (): JSX.Element => {
-    const [singleVan,setSingleVan] = useState({
-        description:"",
-        id:"",
-        imageUrl:"",
-        name:"",
-        price:0,
-        type:""
-    })
-    const params = useParams()
-    const location = useLocation()
     
-    const search = location.state?.state || "" 
-    // const search = location.state && location.state.search || ""
-
-    console.log(location)
-
-    const fetchData = () =>{
-         fetch("/api/vans/"+params['id']).then(res=>res.json()).then(res=>setSingleVan(res['vans']))
-    }
-
-    useEffect(()=> fetchData(),[])
+    const location = useLocation()
+    const singleVan = useLoaderData() as vansValue
+    
+    const search = location.state?.state || ""
 
     return <div className="p-10 space-y-5">
         <Link
